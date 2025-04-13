@@ -14,7 +14,7 @@ export const getUsersForSidebar=async (req,res)=>{
 };
 export const getMessages=async (req,res)=>{
     try {
-        const{userId:userToChatId}=req.params;
+        const{id:userToChatId}=req.params;
         const myId=req.user._id;
         const messages=await Message.find({
             $or:[
@@ -31,7 +31,7 @@ export const getMessages=async (req,res)=>{
 export const  sendMessage=async (req,res)=>{
     try {
         const {text,image}=req.body;
-        const {userId:receiverID}=req.params;
+        const {id:receiverID}=req.params;
         const senderID=req.user._id;
         let imageURL;
         if(image){
